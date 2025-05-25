@@ -1,0 +1,321 @@
+/* Responsive Styles - Organized by Component */
+
+/* -------------------------------------------
+   General Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 480px) {
+    /* General adjustments */
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    h3 {
+        font-size: 1.2rem;
+    }
+    
+    .detail-row {
+        flex-direction: column;
+    }
+}
+
+/* -------------------------------------------
+   Header Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 480px) {
+    /* Header-specific mobile styles would go here */
+}
+
+/* -------------------------------------------
+   Hero Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 480px) {
+    .hero-content {
+        flex-direction: column-reverse;
+    }
+    
+    .hero-image {
+        margin-bottom: 2rem;
+    }
+    
+    .hero-image img {
+        max-width: 180px;
+        height: auto;
+    }
+    
+    .hero-title {
+        font-size: 1.2rem;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}
+
+/* -------------------------------------------
+   About Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 768px) {
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .about-image {
+        order: -1;
+    }
+    
+    .about-image img {
+        max-width: 280px;
+    }
+    
+    .detail-row {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .about-text h3 {
+        font-size: 1.5rem;
+    }
+    
+    .about-details {
+        margin-top: 1.5rem;
+    }
+    
+    .detail-icon {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+    }
+}
+
+/* -------------------------------------------
+   Education Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 768px) {
+    .education-card {
+        padding: 1.5rem;
+    }
+    
+    .education-year {
+        position: relative;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .education-degree {
+        font-size: 1.1rem;
+    }
+    
+    .education-school {
+        font-size: 1rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .education-highlights {
+        gap: 0.5rem;
+    }
+    
+    .education-highlight {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* -------------------------------------------
+   Skills Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 768px) {
+    .skills-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .skills-category {
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .skills-category {
+        padding: 1.5rem;
+    }
+    
+    .skill-tag {
+        padding: 0.5rem 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* -------------------------------------------
+   Contact Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 768px) {
+    .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .contact-info {
+        order: 2;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.25rem;
+    }
+    
+    .contact-icon {
+        margin-bottom: 1rem;
+    }
+    
+    .contact-form {
+        padding: 1.5rem;
+    }
+    
+    .form-group {
+        margin-bottom: 1rem;
+    }
+}
+
+/* -------------------------------------------
+   Footer Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 480px) {
+    .footer {
+        padding: 2rem 0 1rem;
+    }
+    
+    .footer-logo {
+        font-size: 1.5rem;
+    }
+    
+    .footer-social {
+        gap: 0.75rem;
+    }
+    
+    .social-link {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+    
+    #scrollToTop {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* -------------------------------------------
+   Projects Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 480px) {
+    .project-filters {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+    
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* -------------------------------------------
+   Publications Component Responsive Styling
+   ------------------------------------------- */
+/* Responsive styles now included directly in publications.css with a mobile-first approach */
+
+/* -------------------------------------------
+   Certifications Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 480px) {
+    .cert-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+/* -------------------------------------------
+   Achievements Component Responsive Styling
+   ------------------------------------------- */
+@media only screen and (max-width: 480px) {
+    /* Achievement-specific mobile styles would go here */
+}
+
+/* -------------------------------------------
+   Tablet Responsive Styles (481px - 768px)
+   ------------------------------------------- */
+@media only screen and (min-width: 481px) and (max-width: 768px) {
+    /* Tablet styles for various components */
+}
+
+/* -------------------------------------------
+   Small Desktop Responsive Styles (769px - 1024px)
+   ------------------------------------------- */
+@media only screen and (min-width: 769px) and (max-width: 1024px) {
+    /* Small desktop styles for various components */
+}
+
+/* -------------------------------------------
+   Large Desktop Responsive Styles (1025px and up)
+   ------------------------------------------- */
+@media only screen and (min-width: 1025px) {
+    /* Large desktop styles for various components */
+}
+
+/* Improved form styling */
+form .form-success {
+    background-color: var(--success-color);
+    color: white;
+    padding: 1rem;
+    border-radius: var(--border-radius-sm);
+    margin-top: 1rem;
+    text-align: center;
+}
+
+/* Improved image styling for projects */
+.project-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: var(--border-radius-md);
+    border-top-right-radius: var(--border-radius-md);
+}
+
+/* Better link styling for the resume section */
+.btn-preview, .btn-download {
+    padding: 0.75rem 1.25rem;
+}
+
+@media (max-width: 480px) {
+    .btn-preview, .btn-download {
+        width: 100%;
+        margin-bottom: 0.75rem;
+        text-align: center;
+    }
+}
+
+/* Add smooth image transitions */
+.project-image img, .profile-image {
+    transition: transform var(--transition-normal);
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+}
+
+.profile-image:hover {
+    transform: scale(1.05);
+}

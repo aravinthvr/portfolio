@@ -1,0 +1,193 @@
+/**
+ * EDUCATION COMPONENT
+ * 
+ * Styles for education section
+ */
+
+/* Education Section */
+.education {
+  background-color: var(--bg-color-alt);
+  padding: var(--spacing-xl) 0;
+  position: relative;
+}
+
+.education-container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}
+
+.section-heading {
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.underline {
+  width: 60px;
+  height: 4px;
+  background-color: var(--primary-color);
+  margin: 0 auto;
+  margin-top: var(--spacing-xs);
+}
+
+/* Education Timeline */
+.education-timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+.education-timeline::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: var(--primary-color);
+  opacity: 0.3;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin-left: -2px;
+}
+
+/* Education Cards */
+.education-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  margin-bottom: 2rem;
+  position: relative;
+  border-left: 5px solid var(--primary-color);
+  transition: all var(--transition-normal);
+}
+
+.education-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.education-card:last-child {
+  margin-bottom: 0;
+}
+
+/* Education Year Badge */
+.education-year {
+  position: absolute;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-sm);
+  top: -15px;
+  left: -15px;
+  font-size: 0.9rem;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+}
+
+/* Education Content */
+.education-content {
+  padding-top: 0.5rem;
+}
+
+.education-degree {
+  font-size: 1.3rem;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+.education-school {
+  font-size: 1.1rem;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.education-description {
+  color: var(--text-color-light);
+  margin-bottom: 1.2rem;
+  line-height: 1.7;
+}
+
+/* Education Highlights */
+.education-highlights {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.education-highlight {
+  background: rgba(var(--primary-color-rgb), 0.1);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.education-highlight:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Education Achievements */
+.education-achievements {
+  margin-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+  padding-top: 1rem;
+}
+
+.education-achievements h4 {
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+.education-achievements ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.education-achievements li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color-light);
+}
+
+.education-achievements li::before {
+  content: '✓';
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+}
+
+/* Education Gallery */
+.education-gallery {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.education-gallery img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  transition: transform var(--transition-fast);
+}
+
+.education-gallery img:hover {
+  transform: scale(1.1);
+}
+
+/* Responsive styles in responsive.css */

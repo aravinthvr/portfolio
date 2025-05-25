@@ -1,0 +1,396 @@
+/**
+ * HEADER COMPONENT
+ * 
+ * Styles for the navigation header and theme toggle
+ */
+
+/* Header Container */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--bg-color);
+    box-shadow: 0 2px 10px var(--shadow-color);
+    transition: background-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+/* Logo */
+.logo a {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+/* Navigation menu */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: var(--spacing-sm);
+    position: relative;
+}
+
+.nav-link {
+    color: var(--text-color);
+    font-weight: 500;
+    padding: 0.5rem;
+    position: relative;
+    text-decoration: none;
+}
+
+.nav-link::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--primary-color);
+    transition: width var(--transition-normal);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+    width: 100%;
+}
+
+/* Dropdown menu */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.dropdown-toggle .fa-chevron-down {
+    font-size: 0.8rem;
+    transition: transform var(--transition-fast);
+}
+
+.dropdown.active .dropdown-toggle .fa-chevron-down {
+    transform: rotate(180deg);
+}
+
+/* Desktop dropdown behavior */
+@media screen and (min-width: 769px) {
+    .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+    
+    .dropdown:hover .dropdown-toggle .fa-chevron-down {
+        transform: rotate(180deg);
+    }
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 180px;
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 5px 15px var(--shadow-color);
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all var(--transition-fast);
+    z-index: 100;
+    list-style: none; /* Remove bullet points */
+    margin: 0;
+}
+
+.dropdown.active .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-color);
+    text-decoration: none;
+    transition: background-color var(--transition-fast);
+}
+
+.dropdown-item:hover {
+    background-color: var(--bg-color-alt);
+    color: var(--primary-color);
+}
+
+/* Mobile menu toggle */
+.nav-toggle {
+    display: none;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+    z-index: 1100;
+}
+
+.nav-toggle .bar {
+    display: block;
+    width: 30px;
+    height: 3px;
+    margin: 5px 0;
+    background-color: var(--text-color);
+    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+    position: relative;
+}
+
+/* Creates a proper X with absolute positioning */
+@media screen and (max-width: 768px) {
+    .nav-toggle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        position: relative;
+        margin-right: 1rem;
+    }
+    
+    .nav-toggle .bar {
+        position: absolute;
+        transition: all 0.3s ease;
+        width: 30px;
+    }
+    
+    .nav-toggle .bar:nth-child(1) {
+        transform: translateY(-8px);
+    }
+    
+    .nav-toggle .bar:nth-child(3) {
+        transform: translateY(8px);
+    }
+    
+    .nav-toggle.active .bar:nth-child(1) {
+        transform: rotate(45deg);
+    }
+    
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .nav-toggle.active .bar:nth-child(3) {
+        transform: rotate(-45deg);
+    }
+}
+
+/* Theme toggle */
+.theme-toggle {
+    margin-left: var(--spacing-md);
+    display: flex;
+    align-items: center;
+}
+
+#themeToggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--border-radius-round);
+    transition: background-color var(--transition-fast), color var(--transition-fast);
+    padding: 0;
+    background-color: transparent;
+}
+
+#themeToggle:hover {
+    background-color: var(--bg-color-alt);
+}
+
+/* Theme icon display */
+#themeToggle .fa-moon,
+#themeToggle .fa-sun {
+    font-size: 1.5rem;
+    transition: opacity var(--transition-fast);
+}
+
+#themeToggle .fa-moon {
+    display: block;
+    opacity: 1;
+}
+
+#themeToggle .fa-sun {
+    display: none;
+    opacity: 0;
+}
+
+body.dark-theme #themeToggle .fa-moon {
+    display: none;
+    opacity: 0;
+}
+
+body.dark-theme #themeToggle .fa-sun {
+    display: block;
+    opacity: 1;
+}
+
+/* Mobile specific styles */
+@media screen and (max-width: 768px) {
+    .navbar {
+        padding: 0.75rem 0;
+    }
+    
+    .logo {
+        margin-left: 1rem;
+    }
+    
+    .theme-toggle {
+        margin-right: 1rem;
+    }
+    
+    #themeToggle {
+        width: 2.25rem;
+        height: 2.25rem;
+        background-color: var(--bg-color-alt);
+    }
+    
+    #themeToggle .fa-moon,
+    #themeToggle .fa-sun {
+        font-size: 1.25rem;
+    }
+
+    /* Hamburger menu button */
+    .nav-toggle {
+        display: block;
+        width: 26px;
+        height: 26px;
+        margin-right: 1rem;
+        position: relative;
+    }
+    
+    .nav-toggle .bar {
+        position: absolute;
+        left: 0;
+        width: 26px;
+        height: 2px;
+        background-color: var(--text-color);
+        transition: all 0.25s ease-in-out;
+    }
+    
+    /* Set the three bars */
+    .nav-toggle .bar:nth-child(1) {
+        top: 4px;
+    }
+    
+    .nav-toggle .bar:nth-child(2) {
+        top: 6px;
+    }
+    
+    .nav-toggle .bar:nth-child(3) {
+        top: 8px;
+    }
+    
+    /* Transform to X when active */
+    .nav-toggle.active .bar:nth-child(1) {
+        top: 6px;
+        transform: rotate(45deg);
+    }
+    
+    .nav-toggle.active .bar:nth-child(2) {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    
+    .nav-toggle.active .bar:nth-child(3) {
+        top: 6px;
+        transform: rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background-color: var(--bg-color);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        transition: left var(--transition-normal);
+        overflow-y: auto;
+        margin: 0;
+        z-index: 1000;
+    }
+    
+    .nav-menu.active {
+        left: 0;
+        box-shadow: 0 5px 15px var(--shadow-color);
+    }
+    
+    .nav-item {
+        margin: 0.5rem 0;
+        width: 100%;
+    }
+    
+    .nav-link {
+        width: 100%;
+        display: block;
+        padding: 0.75rem 0;
+    }
+    
+    /* Mobile dropdown styles */
+    .dropdown-toggle {
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+    }
+    
+    .dropdown-menu {
+        position: static;
+        width: 100%;
+        box-shadow: none;
+        padding-left: 1rem;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: max-height var(--transition-normal);
+        background-color: transparent;
+        padding: 0 0 0 1rem; /* Adjust padding to align properly */
+    }
+    
+    .dropdown.active .dropdown-menu {
+        max-height: 200px;
+        border-left: 2px solid var(--primary-color);
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .dropdown-item {
+        padding: 0.75rem 0.5rem;
+    }
+}
