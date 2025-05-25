@@ -1,0 +1,186 @@
+/**
+ * CUSTOM ICONS
+ * 
+ * Custom icon styles for social media and other icons
+ */
+
+/* Logo icon styles */
+
+/* Scaler logo icon */
+.scaler-icon {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('../../assets/images/scaler-logo.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+    transition: all var(--transition-fast);
+}
+
+/* Small Scaler icon for certifications */
+.scaler-icon-small {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-image: url('../../assets/images/scaler-logo.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    vertical-align: middle;
+}
+
+/* Coursera styling */
+.coursera-badge i {
+    font-size: 14px;
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+/* Adjust Scaler logo in social links */
+.social-link .scaler-icon {
+    width: 18px;
+    height: 18px;
+    position: relative;
+    top: 0; /* Fine-tune vertical alignment */
+}
+
+/* Adjust Scaler logo color on hover */
+.social-link:hover .scaler-icon {
+    filter: brightness(0) invert(1); /* Makes the SVG white when parent is hovered */
+}
+
+/* Footer specific adjustments */
+.footer-social .social-link .scaler-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* Dark theme adjustments */
+.dark-theme .social-link .scaler-icon {
+    filter: brightness(0.9); /* Slightly adjust brightness for dark theme */
+}
+
+/* Certification Badge Styles */
+.cert-logo-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color-alt);
+    border-radius: 12px;
+    padding: 2px 8px;
+    margin-left: 6px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    top: -1px;
+    transition: all var(--transition-fast);
+    min-width: 24px;
+    min-height: 16px;
+}
+
+.hackerrank-badge i {
+    font-size: 14px;
+    color: var(--primary-color);
+}
+
+/* Scaler badge for certifications */
+.scaler-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--bg-color-alt);
+    border-radius: 12px;
+    padding: 2px 8px;
+    margin-left: 6px;
+    border: 1px solid var(--border-color);
+    position: relative;
+    top: -1px;
+    transition: all var(--transition-fast);
+}
+
+/* Special styling for platform certifications */
+.scaler-cert {
+    border: 1px solid rgba(var(--primary-color-rgb), 0.15);
+    background: linear-gradient(
+        to bottom right,
+        var(--card-bg),
+        var(--card-bg),
+        rgba(var(--primary-color-rgb), 0.05)
+    );
+}
+
+.coursera-cert {
+    border: 1px solid rgba(var(--primary-color-rgb), 0.15);
+    background: linear-gradient(
+        to bottom right,
+        var(--card-bg),
+        var(--card-bg),
+        rgba(var(--primary-color-rgb), 0.05)
+    );
+}
+
+.hackerrank-cert {
+    border: 1px solid rgba(var(--primary-color-rgb), 0.15);
+    background: linear-gradient(
+        to bottom right,
+        var(--card-bg),
+        var(--card-bg),
+        rgba(var(--primary-color-rgb), 0.05)
+    );
+}
+
+.cert-card:hover .scaler-badge {
+    background-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.cert-card:hover .scaler-badge .scaler-icon-small {
+    filter: brightness(0) invert(1);
+}
+
+/* Coursera badge hover */
+.cert-card:hover .coursera-badge {
+    background-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.cert-card:hover .coursera-badge i {
+    color: white;
+}
+
+/* HackerRank badge hover */
+.cert-card:hover .hackerrank-badge {
+    background-color: var(--primary-color);
+    transform: scale(1.05);
+}
+
+.cert-card:hover .hackerrank-badge i {
+    color: white;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .social-link .scaler-icon {
+        width: 16px;
+        height: 16px;
+    }
+      .scaler-icon-small {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .coursera-badge i {
+        font-size: 12px;
+    }
+    
+    .hackerrank-badge i {
+        font-size: 12px;
+    }
+    
+    .cert-logo-badge {
+        padding: 1px 6px;
+        min-width: 20px;
+        min-height: 14px;
+    }
+}

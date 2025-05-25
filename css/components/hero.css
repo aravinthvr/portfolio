@@ -1,0 +1,374 @@
+/**
+ * HERO COMPONENT
+ * 
+ * Styles for the hero/banner section
+ */
+
+/* Hero Section */
+.hero {
+    background-color: var(--bg-color);
+    padding-top: 100px;
+    padding-bottom: 3rem;
+    overflow: hidden;
+    position: relative;
+    min-height: calc(100vh - 0px);
+    display: flex;
+    align-items: center;
+}
+
+.hero .container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm);
+    z-index: 2;
+}
+
+/* Hero Content */
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 3rem;
+    position: relative;
+}
+
+.hero-text {
+    flex: 1;
+    max-width: 600px;
+}
+
+/* Text styling improvements */
+.hero-greeting {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-weight: 500;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.hero-name {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+    animation: fadeIn 1s ease-out;
+}
+
+.hero-title {
+    font-size: 1.5rem;
+    color: var(--text-color-light);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    line-height: 1.4;
+    animation: fadeIn 1.2s ease-out;
+}
+
+.hero-description {
+    margin-bottom: 2rem;
+    color: var(--text-color-light);
+    font-size: 1.1rem;
+    line-height: 1.6;
+    animation: fadeIn 1.4s ease-out;
+}
+
+/* Hero CTA Button */
+.hero-cta {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+    animation: fadeIn 1.6s ease-out;
+}
+
+.hero-cta .btn {
+    padding: 0.75rem 2rem;
+    font-weight: 500;
+    border-radius: var(--border-radius-md);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+}
+
+.hero-cta .btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    border: 2px solid var(--primary-color);
+}
+
+.hero-cta .btn-primary:hover {
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+.hero-cta .btn-secondary {
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+}
+
+.hero-cta .btn-secondary:hover {
+    background-color: var(--bg-color-alt);
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* Social Media Icons */
+.social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    animation: fadeIn 1.8s ease-out;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-color-alt);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+}
+
+.social-link:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+}
+
+/* Hero Image */
+.hero-image {
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    animation: fadeIn 1.5s ease-out;
+}
+
+.hero-image:before {
+    content: '';
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+    opacity: 0.1;
+    z-index: -1;
+    animation: pulse 3s infinite;
+}
+
+.hero-image img.profile-image {
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    box-shadow: 0 10px 30px var(--shadow-color);
+}
+
+/* Background elements */
+.hero-bg-element {
+    position: absolute;
+    z-index: 0;
+    opacity: 0.1;
+}
+
+.hero-bg-circle {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    position: absolute;
+    top: -100px;
+    right: -200px;
+    z-index: 0;
+    opacity: 0.05;
+}
+
+/* Scroll Down Button */
+.scroll-down {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: bounce 2s infinite;
+    z-index: 2;
+}
+
+.scroll-down a {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    transition: all var(--transition-fast);
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 10px var(--shadow-color);
+}
+
+.scroll-down a:hover {
+    color: white;
+    background-color: var(--primary-color);
+    transform: translateY(4px);
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+    }
+    40% {
+        transform: translateY(-10px) translateX(-50%);
+    }
+    60% {
+        transform: translateY(-5px) translateX(-50%);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.15;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation for hero image */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.hero-image {
+    animation: float 4s ease-in-out infinite;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 992px) {
+    .hero-name {
+        font-size: 3rem;
+    }
+    
+    .hero-image img.profile-image {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .hero-image:before {
+        width: 280px;
+        height: 280px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hero {
+        padding-top: 100px;
+        min-height: auto;
+        padding-bottom: 5rem;
+    }
+    
+    .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .hero-text {
+        max-width: 100%;
+    }
+    
+    .hero-cta {
+        justify-content: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .hero-name {
+        font-size: 2.5rem;
+    }
+    
+    .hero-title {
+        font-size: 1.3rem;
+    }
+    
+    .scroll-down {
+        bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .hero-name {
+        font-size: 2.2rem;
+    }
+    
+    .hero-title {
+        font-size: 1.1rem;
+    }
+    
+    .hero-image img.profile-image {
+        width: 200px;
+        height: 200px;
+    }
+    
+    .hero-image:before {
+        width: 240px;
+        height: 240px;
+    }
+    
+    .hero-cta {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .hero-cta .btn {
+        width: 100%;
+    }
+}

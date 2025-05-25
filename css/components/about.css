@@ -1,0 +1,130 @@
+/**
+ * ABOUT COMPONENT
+ * 
+ * Styles for the about me section
+ */
+
+/* About Section */
+.about {
+    background-color: var(--bg-color-alt);
+    padding: var(--spacing-xl) 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Standard container and heading styles already defined in base.css */
+
+/* About Content Layout */
+.about-content {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+/* About Image */
+.about-image {
+    position: relative;
+}
+
+.about-image img {
+    width: 100%;
+    max-width: 350px;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px var(--shadow-color);
+    transition: all var(--transition-normal);
+    display: block;
+    margin: 0 auto;
+}
+
+.about-image img:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px var(--shadow-color);
+}
+
+.about-image::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 3px solid var(--primary-color);
+    border-radius: var(--border-radius-lg);
+    top: 15px;
+    left: 15px;
+    z-index: -1;
+    opacity: 0.2;
+}
+
+/* About Text Content */
+.about-text {
+    color: var(--text-color);
+}
+
+.about-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary-color);
+    position: relative;
+    display: inline-block;
+}
+
+.about-text h3::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    background-color: var(--primary-color);
+    bottom: -5px;
+    left: 0;
+}
+
+.about-text p {
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+    color: var(--text-color);
+}
+
+/* About Details */
+.about-details {
+    margin-top: 2rem;
+}
+
+.detail-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.detail-item {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+}
+
+.detail-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3rem;
+    height: 3rem;
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    border-radius: 50%;
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    flex-shrink: 0;
+}
+
+.detail-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+}
+
+.detail-content p {
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    margin-bottom: 0;
+}
+
+/* Responsive styles in responsive.css */

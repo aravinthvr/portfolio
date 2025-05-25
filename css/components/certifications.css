@@ -1,0 +1,204 @@
+/**
+ * CERTIFICATIONS COMPONENT
+ * 
+ * Styles for certifications section
+ */
+
+/* Certifications Section */
+.certifications {
+    background-color: var(--bg-color-alt);
+}
+
+/* Certifications Grid */
+.certifications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Certification Card */
+.cert-card {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-lg);
+    padding: 1.75rem;
+    box-shadow: 0 5px 15px var(--shadow-color);
+    transition: all var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    min-height: 340px;
+}
+
+.cert-card:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+}
+
+.cert-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px var(--shadow-color);
+}
+
+/* Certification Icon */
+.cert-icon {
+    width: 55px;
+    height: 55px;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+    box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+}
+
+.cert-icon i {
+    font-size: 1.5rem;
+}
+
+/* Certification Content */
+.cert-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.cert-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    min-height: 2.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cert-issuer {
+    font-size: 1rem;
+    color: var(--text-color-light);
+    margin-bottom: 0.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cert-issuer i {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.cert-provider {
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+.cert-date {
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cert-date i {
+    color: var(--primary-color);
+}
+
+.cert-validity {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    color: var(--primary-color);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    margin-left: 8px;
+    display: inline-block;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .certifications-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .cert-card {
+        min-height: auto;
+    }
+    
+    .cert-title {
+        min-height: auto;
+    }
+    
+    .cert-validity {
+        display: block;
+        margin-left: 0;
+        margin-top: 5px;
+        text-align: center;
+        width: fit-content;
+    }
+}
+
+.cert-description {
+    margin-top: 1rem;
+    font-size: 0.95rem;
+    color: var(--text-color);
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+}
+
+/* Certification Links */
+.cert-links {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.cert-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+}
+
+.cert-link:hover {
+    color: var(--secondary-color);
+}
+
+/* Certification Badge */
+.cert-badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: auto;
+    opacity: 0.8;
+    transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.cert-card:hover .cert-badge {
+    transform: scale(1.1);
+    opacity: 1;
+}

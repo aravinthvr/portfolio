@@ -1,0 +1,115 @@
+/**
+ * FOOTER COMPONENT
+ * 
+ * Styles for the page footer
+ */
+
+/* Footer Section */
+.footer {
+  background-color: var(--bg-color-alt);
+  padding: 3rem 0 1rem;
+  position: relative;
+  border-top: 1px solid var(--border-color);
+}
+
+/* Footer Content */
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+/* Footer Logo */
+.footer-logo {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  letter-spacing: 1px;
+}
+
+.footer-logo:hover {
+  color: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+/* Footer Social */
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: var(--bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  border: 1px solid var(--border-color);
+}
+
+.social-link:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(var(--primary-color-rgb), 0.3);
+}
+
+/* Footer Bottom */
+.footer-bottom {
+  text-align: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: var(--text-color-light);
+}
+
+/* Scroll to Top Button */
+#scrollToTop {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 45px;
+  height: 45px;
+  background-color: var(--primary-color);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all var(--transition-fast);
+  border: none;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  z-index: 999;
+}
+
+#scrollToTop.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+#scrollToTop:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(var(--primary-color-rgb), 0.4);
+}
+
+/* Responsive styles in responsive.css */

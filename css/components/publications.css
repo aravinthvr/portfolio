@@ -1,0 +1,709 @@
+/**
+ * PUBLICATIONS COMPONENT
+ * 
+ * Styles for publications section - Ultra-compact mobile-first approach
+ */
+
+/* Publications Section */
+.publications {
+  background-color: var(--bg-color);
+  padding: 1.5rem 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Make section heading more compact */
+.publications .section-heading h2 {
+  margin-bottom: 0.5rem;
+}
+
+.publications .section-heading .underline {
+  margin-bottom: 0.5rem;
+}
+
+/* Fix for section heading with badge */
+.publications .section-heading h2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.publications .section-heading h2 span.pub-count {
+  margin-top: 2px;
+}
+
+@media only screen and (min-width: 768px) {
+  .publications .section-heading h2 {
+    margin-bottom: 0.75rem;
+  }
+  
+  .publications .section-heading .underline {
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Card hover animation */
+@keyframes cardPulse {
+  0% { box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06); }
+  50% { box-shadow: 0 4px 12px rgba(var(--primary-color-rgb), 0.15); }
+  100% { box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06); }
+}
+
+/* Publications Grid */
+.publications-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+  width: 100%;
+  /*max-width: 1200px;*/
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Publication Card */
+.pub-card {
+  background-color: var(--card-bg);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.06);
+  position: relative;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pub-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+  animation: cardPulse 1.5s infinite;
+}
+
+/* Enhance styling for real publications */
+.pub-card:not(.future-pub) {
+  border-left: 4px solid var(--primary-color);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.pub-card:not(.future-pub):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 15px rgba(var(--primary-color-rgb), 0.15);
+}
+
+.pub-card:not(.future-pub) .pub-title {
+  font-weight: 700;
+}
+
+/* Add a decorative element to real publications */
+.pub-card:not(.future-pub)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 20px 20px 0;
+  border-color: transparent var(--primary-color) transparent transparent;
+  opacity: 0.7;
+}
+
+@media only screen and (max-width: 768px) {
+  .pub-card:not(.future-pub)::before {
+    border-width: 0 15px 15px 0;
+  }
+}
+
+/* Add subtle highlight effect to real publications */
+.pub-card:not(.future-pub)::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, 
+    rgba(var(--primary-color-rgb), 0.05) 0%, 
+    rgba(var(--primary-color-rgb), 0) 30%,
+    rgba(var(--primary-color-rgb), 0) 70%,
+    rgba(var(--primary-color-rgb), 0.05) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.pub-card:not(.future-pub) .pub-venue {
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.pub-card:not(.future-pub) .pub-badge {
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 5px rgba(var(--primary-color-rgb), 0.3);
+}
+
+/* Style for cards without images - give them a slight left border highlight */
+.pub-card .pub-info:not(:has(.pub-image)) {
+  /* Removing for now*/
+  /*border-left: 4px solid var(--primary-color);*/
+  padding-left: 3.2rem;
+}
+
+@media only screen and (max-width: 576px) {
+  .pub-card .pub-info:not(:has(.pub-image)) {    
+    padding-left: 0.5rem;
+    /* Removing for now*/
+    /* border-left: 4px solid var(--primary-color);*/
+  }
+}
+
+/* Card link overlay */
+.pub-card-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Ensure other elements remain clickable */
+.pub-links a, .pub-tag {
+  position: relative;
+  z-index: 2;
+}
+
+/* Publication Badge */
+.pub-badge {
+  background-color: var(--primary-color);
+  color: white;
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  position: absolute;
+  top: 0.6rem;
+  left: 0.6rem;
+  z-index: 1;
+}
+
+/* Publication count badge */
+.pub-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.35em;
+  width: 1.8em;
+  height: 1.8em;
+  border-radius: 50%;
+  position: relative;
+  top: -0.4em;
+  margin-left: 0.3em;
+  font-weight: 700;
+  vertical-align: middle;
+  line-height: 1;
+  padding-top: 1px;
+}
+
+@media only screen and (max-width: 576px) {
+  .pub-count {
+    font-size: 0.4em;
+  }
+}
+
+/* Publication Info */
+.pub-info {
+  width: 100%;
+  padding: 0.8rem; /* Increased from 0.6rem */
+  padding-left: 3.2rem; /* Increased from 3rem */
+  display: flex;
+  flex-direction: column;
+}
+
+/* Publication Title */
+.pub-title {
+  font-size: 1.05rem; /* Increased from 0.95rem */
+  margin-bottom: 0.4rem; /* Increased from 0.3rem */
+  color: var(--text-color);
+  font-weight: 600;
+  line-height: 1.4; /* Increased from 1.3 */
+}
+
+/* Publication Meta Info */
+.pub-meta {
+  margin-bottom: 0.3rem;
+}
+
+/* Publication Authors */
+.pub-authors {
+  color: var(--text-color-light);
+  font-size: 0.85rem; /* Increased from 0.75rem */
+  margin-bottom: 0.3rem; /* Increased from 0.2rem */
+  font-style: italic;
+  line-height: 1.4; /* Added line height */
+}
+
+/* Publication Venue */
+.pub-venue {
+  color: var(--text-color);
+  font-size: 0.8rem; /* Increased from 0.7rem */
+  margin-bottom: 0.3rem; /* Increased from 0.2rem */
+  line-height: 1.4; /* Increased from 1.3 */
+}
+
+/* Publication Date */
+.pub-date {
+  color: var(--text-color-light);
+  font-size: 0.8rem; /* Increased from 0.7rem */
+  margin-bottom: 0.4rem; /* Increased from 0.3rem */
+  display: flex;
+  align-items: center;
+  gap: 0.3rem; /* Increased from 0.25rem */
+}
+
+.pub-date i {
+  color: var(--primary-color);
+  font-size: 0.8rem; /* Increased from 0.7rem */
+}
+
+/* Publication Tags */
+.pub-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem; /* Increased from 0.2rem */
+  margin-bottom: 0.4rem; /* Increased from 0.3rem */
+}
+
+.pub-tag {
+  background-color: rgba(var(--primary-color-rgb), 0.08);
+  color: var(--primary-color);
+  padding: 0.2rem 0.4rem; /* Increased from 0.15rem 0.3rem */
+  border-radius: 3px;
+  font-size: 0.7rem; /* Increased from 0.6rem */
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Publication Abstract */
+.pub-abstract {
+  color: var(--text-color);
+  font-size: 0.8rem; /* Increased from 0.7rem */
+  line-height: 1.5; /* Increased from 1.3 */
+  margin-bottom: 0.4rem; /* Increased from 0.3rem */
+  max-height: 3rem; /* Increased from 2.6rem */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+/* Publication Links */
+.pub-links {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 0.6rem; /* Increased from 0.5rem */
+  margin-top: 0.4rem; /* Increased from 0.3rem */
+}
+
+.pub-links a {
+  text-decoration: none;
+  font-size: 0.75rem; /* Increased from 0.65rem */
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem; /* Increased from 0.25rem */
+  transition: all 0.15s ease;
+  padding: 0.25rem 0.5rem; /* Increased from 0.2rem 0.4rem */
+  border-radius: 4px;
+}
+
+.pub-links a.primary-link {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.pub-links a.secondary-link {
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  color: var(--primary-color);
+}
+
+.pub-links a:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pub-links a.primary-link:hover {
+  background-color: var(--secondary-color);
+}
+
+.pub-links a.secondary-link:hover {
+  background-color: rgba(var(--primary-color-rgb), 0.15);
+}
+
+.pub-links a i {
+  font-size: 0.75rem; /* Increased from 0.65rem */
+}
+
+/* Tablet and Desktop Styles */
+@media only screen and (min-width: 768px) {
+  .publications {
+    padding: 2.5rem 0;
+  }
+  
+  .publications-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem; /* Increased from 1.25rem */
+    margin-top: 1.5rem; /* Increased from 1.25rem */
+  }
+  
+  .pub-card {
+    border-radius: 10px;
+  }
+  
+  .pub-badge {
+    width: 32px;
+    height: 32px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+  
+  .pub-info {
+    padding: 1rem; /* Increased from 0.9rem */
+    padding-left: 3.75rem; /* Increased from 3.5rem */
+  }
+  
+  .pub-title {
+    font-size: 1.1rem; /* Increased from 1rem */
+    margin-bottom: 0.45rem; /* Increased from 0.35rem */
+    line-height: 1.45; /* Added line height */
+  }
+  
+  .pub-authors {
+    font-size: 0.9rem; /* Increased from 0.8rem */
+    margin-bottom: 0.35rem; /* Increased from 0.25rem */
+    line-height: 1.45; /* Added line height */
+  }
+  
+  .pub-venue {
+    font-size: 0.85rem; /* Increased from 0.8rem */
+    margin-bottom: 0.35rem; /* Increased from 0.25rem */
+    line-height: 1.45; /* Added line height */
+  }
+  
+  .pub-date {
+    font-size: 0.85rem; /* Increased from 0.75rem */
+    margin-bottom: 0.45rem; /* Increased from 0.35rem */
+  }
+  
+  .pub-tags {
+    gap: 0.4rem; /* Increased from 0.3rem */
+    margin-bottom: 0.45rem; /* Increased from 0.35rem */
+  }
+  
+  .pub-tag {
+    padding: 0.25rem 0.45rem; /* Increased from 0.2rem 0.4rem */
+    font-size: 0.7rem; /* Increased from 0.65rem */
+  }
+  
+  .pub-abstract {
+    font-size: 0.85rem; /* Increased from 0.8rem */
+    line-height: 1.6; /* Increased from 1.4 */
+    margin-bottom: 0.6rem; /* Increased from 0.5rem */
+    max-height: none;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+  
+  .pub-links {
+    gap: 0.7rem; /* Increased from 0.6rem */
+  }
+  
+  .pub-links a {
+    font-size: 0.8rem; /* Increased from 0.75rem */
+    padding: 0.3rem 0.6rem; /* Increased padding */
+  }
+}
+
+/* Optional Publication Image Style */
+.pub-image {
+  width: 75px;
+  height: 75px;
+  border-radius: 6px;
+  object-fit: cover;
+  float: right;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  border: 2px solid var(--primary-color);
+  transition: transform 0.2s ease-in-out;
+}
+
+.pub-image:hover {
+  transform: scale(1.05);
+}
+
+/* Large Desktop Styles */
+@media only screen and (min-width: 1200px) {
+  .publications-grid {
+    grid-template-columns: repeat(2, 1fr);
+    /*max-width: 1000px;*/
+    margin-left: auto;
+    margin-right: auto;
+    gap: 2rem; /* Added increased gap */
+  }
+  
+  .pub-info {
+    padding: 1.2rem; /* Increased from 1rem */
+    padding-left: 3.9rem; /* Increased from 3.75rem */
+  }
+  
+  .pub-title {
+    font-size: 1.15rem; /* Increased from 1.05rem */
+    margin-bottom: 0.5rem; /* Increased from 0.4rem */
+    line-height: 1.5; /* Added line height */
+  }
+  
+  .pub-authors {
+    font-size: 0.95rem; /* Added increased font size */
+    line-height: 1.5; /* Added line height */
+    margin-bottom: 0.4rem; /* Added increased margin */
+  }
+  
+  .pub-venue {
+    font-size: 0.9rem; /* Added increased font size */
+    line-height: 1.5; /* Added line height */
+  }
+  
+  .pub-abstract {
+    font-size: 0.9rem; /* Increased from 0.85rem */
+    line-height: 1.6; /* Added line height */
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    margin-bottom: 0.7rem; /* Added increased margin */
+  }
+  
+  .pub-image {
+    width: 85px;
+    height: 85px;
+  }
+}
+
+/* Compact Publications Grid for Small Screens */
+@media only screen and (max-width: 576px) {
+  .publications-grid {
+    gap: 1.25rem; /* Increased from 1rem */
+  }
+  
+  .pub-card:not(.future-pub) {
+    display: block;
+    border-left: 4px solid var(--primary-color);
+  }
+  
+  .pub-badge {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    width: 24px;
+    height: 24px;
+    margin: 0;
+    z-index: 5;
+  }
+  
+  .pub-info {
+    padding: 0.85rem; /* Increased from 0.75rem */
+    padding-left: 2.85rem; /* Increased from 2.75rem */
+    padding-top: 2.25rem; /* Increased from 2rem */
+  }
+  
+  .pub-title {
+    font-size: 1rem; /* Increased from 0.9rem */
+    font-weight: 600;
+    line-height: 1.45; /* Added line height */
+    margin-bottom: 0.4rem; /* Added increased margin */
+  }
+  
+  .pub-authors {
+    font-size: 0.85rem; /* Added increased font size */
+    line-height: 1.4; /* Added line height */
+    margin-bottom: 0.35rem; /* Added increased margin */
+  }
+  
+  .pub-venue {
+    font-size: 0.8rem; /* Added increased font size */
+    line-height: 1.4; /* Added line height */
+    margin-bottom: 0.35rem; /* Added increased font size */
+  }
+  
+  .pub-abstract {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    overflow: hidden;
+    max-height: none;
+    margin-bottom: 0.6rem; /* Increased from 0.5rem */
+    font-size: 0.8rem; /* Increased from 0.75rem */
+    line-height: 1.5; /* Added line height */
+  }
+  
+  .pub-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem; /* Added margin top */
+  }
+  
+  .pub-links a {
+    flex: 1;
+    text-align: center;
+    margin: 0 0.2rem; /* Increased from 0.15rem */
+    white-space: nowrap;
+    font-size: 0.75rem; /* Added increased font size */
+    padding: 0.25rem 0.4rem; /* Added increased padding */
+  }
+  
+  .pub-links a:first-child {
+    margin-left: 0;
+  }
+  
+  .pub-links a:last-child {
+    margin-right: 0;
+  }
+}
+
+/* Additional mobile fixes */
+@media only screen and (max-width: 576px) {
+  /* Better structure for publication card */
+  .pub-card {
+    padding-top: 12px; /* Increased from 10px */
+    position: relative;
+    overflow: visible;
+  }
+  
+  /* Prevent title and badge overlap */
+  .pub-title {
+    position: relative;
+    z-index: 1;
+    padding-top: 0;
+    margin-top: 0.6rem; /* Increased from 0.5rem */
+  }
+  
+  /* Ensure proper margin for icon badges */
+  .pub-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+  }
+  
+  /* Reposition publication info to avoid overlap */
+  .pub-info {
+    position: relative;
+    padding-top: 1.9rem; /* Increased from 1.75rem */
+    padding-left: 1.1rem; /* Increased from 1rem */
+    margin-top: 0;
+  }
+  
+  /* Improve spacing between cards */
+  .publications-grid {
+    margin-top: 1.5rem; /* Increased from 1.25rem */
+    gap: 1.75rem; /* Increased from 1.5rem */
+  }
+}
+
+/* Future Publication Card Style */
+.pub-card.future-pub {
+  background-color: rgba(var(--primary-color-rgb), 0.03);
+  border: 1px dashed rgba(var(--primary-color-rgb), 0.2);
+  opacity: 0.75;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pub-card.future-pub:hover {
+  opacity: 0.9;
+  animation: none;
+  box-shadow: 0 2px 8px rgba(var(--primary-color-rgb), 0.1);
+}
+
+.pub-card.future-pub .pub-badge {
+  background-color: rgba(var(--primary-color-rgb), 0.5);
+}
+
+.pub-card.future-pub .pub-title {
+  color: var(--primary-color);
+}
+
+.pub-card.future-pub .pub-abstract {
+  font-style: italic;
+}
+
+.pub-card.future-pub .pub-links a {
+  background-color: rgba(var(--primary-color-rgb), 0.08);
+  color: var(--primary-color);
+}
+
+.pub-card.future-pub .pub-tag {
+  background-color: rgba(var(--primary-color-rgb), 0.05);
+  border: 1px dashed rgba(var(--primary-color-rgb), 0.2);
+}
+
+@media only screen and (max-width: 576px) {
+  .pub-card.future-pub {
+    display: none;
+  }
+}
+
+/* Adjust for dark mode */
+.dark-mode .pub-card:not(.future-pub) {
+  border-color: var(--primary-color);
+}
+
+/* Ensure content doesn't overflow on small screens */
+@media only screen and (max-width: 360px) {
+  .pub-title {
+    font-size: 0.95rem; /* Increased from 0.85rem */
+    line-height: 1.4; /* Added line height */
+  }
+  
+  .pub-venue {
+    font-size: 0.75rem; /* Increased from 0.65rem */
+    line-height: 1.4; /* Added line height */
+  }
+  
+  .pub-abstract {
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    font-size: 0.75rem; /* Added font size */
+    line-height: 1.4; /* Added line height */
+  }
+  
+  .pub-links a {
+    font-size: 0.7rem; /* Increased from 0.65rem */
+    padding: 0.2rem 0.35rem; /* Increased from 0.15rem 0.3rem */
+  }
+}
+
+/* Extra polish for larger screens */
+@media only screen and (min-width: 992px) {
+  .publications-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem;
+  }
+  
+  .pub-card:not(.future-pub):hover .pub-badge {
+    transform: rotate(360deg);
+    transition: transform 0.5s ease;
+  }
+  
+  /* Add slight animation to links on hover */
+  .pub-links a:hover {
+    transform: translateY(-2px) scale(1.05);
+  }
+}

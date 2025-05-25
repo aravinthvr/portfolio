@@ -1,0 +1,26 @@
+<!-- SVG project placeholder for ECG analysis project -->
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="100%" height="100%" fill="#3a86ff" />
+  <rect x="5%" y="5%" width="90%" height="90%" fill="#f8f9fa" />
+  
+  <!-- ECG line -->
+  <polyline points="50,225 100,225 125,125 150,325 175,125 200,225 250,225 300,225 325,125 350,325 375,225 425,225 475,225 500,125 525,325 550,125 575,225 625,225 675,225 700,175 725,275 750,225"
+            fill="none" stroke="#ff006e" stroke-width="4" />
+            
+  <!-- Grid lines vertical -->
+  <line x1="50" y1="100" x2="50" y2="350" stroke="#d3d3d3" stroke-width="1" />
+  <line x1="150" y1="100" x2="150" y2="350" stroke="#d3d3d3" stroke-width="1" />
+  <line x1="250" y1="100" x2="250" y2="350" stroke="#d3d3d3" stroke-width="1" />
+  <line x1="350" y1="100" x2="350" y2="350" stroke="#d3d3d3" stroke-width="1" />
+  <line x1="450" y1="100" x2="450" y2="350" stroke="#d3d3d3" stroke-width="1" />
+  <line x1="550" y1="100" x2="550" y2="350" stroke="#d3d3d3" stroke-width="1" />
+  <line x1="650" y1="100" x2="650" y2="350" stroke="#d3d3d3" stroke-width="1" />
+  <line x1="750" y1="100" x2="750" y2="350" stroke="#d3d3d3" stroke-width="1" />
+  
+  <!-- Grid lines horizontal -->
+  <line x1="50" y1="150" x2="750" y2="150" stroke="#d3d3d3" stroke-width="1" />
+  <line x1="50" y1="225" x2="750" y2="225" stroke="#d3d3d3" stroke-width="1" />
+  <line x1="50" y1="300" x2="750" y2="300" stroke="#d3d3d3" stroke-width="1" />
+  
+  <text x="400" y="380" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#343a40">ECG Abnormality Classification</text>
+</svg>

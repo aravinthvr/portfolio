@@ -1,0 +1,27 @@
+<!-- SVG project placeholder for data science -->
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="450" viewBox="0 0 800 450">
+  <rect width="100%" height="100%" fill="#5390d9" />
+  <rect x="5%" y="5%" width="90%" height="90%" fill="#f8f9fa" />
+  
+  <!-- Chart bars -->
+  <rect x="100" y="100" width="50" height="200" fill="#4361ee" />
+  <rect x="200" y="150" width="50" height="150" fill="#4361ee" />
+  <rect x="300" y="180" width="50" height="120" fill="#4361ee" />
+  <rect x="400" y="80" width="50" height="220" fill="#4361ee" />
+  <rect x="500" y="120" width="50" height="180" fill="#4361ee" />
+  <rect x="600" y="200" width="50" height="100" fill="#4361ee" />
+  
+  <!-- Scatter plot dots -->
+  <circle cx="125" cy="120" r="8" fill="#ff5a5f" />
+  <circle cx="225" cy="180" r="8" fill="#ff5a5f" />
+  <circle cx="325" cy="200" r="8" fill="#ff5a5f" />
+  <circle cx="425" cy="100" r="8" fill="#ff5a5f" />
+  <circle cx="525" cy="150" r="8" fill="#ff5a5f" />
+  <circle cx="625" cy="220" r="8" fill="#ff5a5f" />
+  
+  <!-- Line connecting dots -->
+  <polyline points="125,120 225,180 325,200 425,100 525,150 625,220" 
+            fill="none" stroke="#ff5a5f" stroke-width="3" />
+            
+  <text x="400" y="380" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#343a40">Predictive Analysis Model</text>
+</svg>

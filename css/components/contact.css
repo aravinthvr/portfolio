@@ -1,0 +1,222 @@
+/**
+ * CONTACT COMPONENT
+ * 
+ * Styles for contact section
+ */
+
+/* Contact Section */
+.contact {
+  background-color: var(--bg-color);
+  padding: var(--spacing-xl) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Standard container and heading styles already defined in base.css */
+
+/* Contact Content */
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+/* Contact Info */
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Contact Item */
+.contact-item {
+  display: flex;
+  gap: 1.25rem;
+  background-color: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: var(--border-radius-lg);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  transition: all var(--transition-normal);
+  border: 1px solid var(--border-color);
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px var(--shadow-color);
+  border-color: var(--primary-color);
+}
+
+/* Contact Icon */
+.contact-icon {
+  width: 3rem;
+  height: 3rem;
+  background-color: rgba(var(--primary-color-rgb), 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  transition: all var(--transition-normal);
+}
+
+.contact-item:hover .contact-icon {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* Contact Details */
+.contact-details h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-color);
+}
+
+.contact-details p {
+  font-size: 0.95rem;
+  color: var(--text-color-light);
+  margin: 0;
+}
+
+.contact-details a {
+  color: var(--primary-color);
+  transition: color var(--transition-fast);
+  text-decoration: none;
+}
+
+.contact-details a:hover {
+  color: var(--secondary-color);
+  text-decoration: underline;
+}
+
+/* Contact Form */
+.contact-form {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  box-shadow: 0 5px 15px var(--shadow-color);
+  border: 1px solid var(--border-color);
+}
+
+/* Form Groups */
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius-md);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: inherit;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(var(--primary-color-rgb), 0.1);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Form Submit Button */
+.btn-submit {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-submit:hover {
+  background-color: var(--secondary-color);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px var(--shadow-color);
+}
+
+/* Form Validation */
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown) {
+  border-color: #e74c3c;
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group textarea:valid:not(:placeholder-shown) {
+  border-color: var(--success-color);
+}
+
+/* Social Links in Contact Section */
+.contact-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.contact-social-icon {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: var(--bg-color-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-color);
+  font-size: 1.3rem;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+}
+
+.contact-social-icon:hover {
+  background-color: var(--primary-color);
+  color: white;
+  transform: translateY(-5px);
+}
+
+/* Background elements */
+.contact-bg-shape {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background-color: var(--primary-color);
+  opacity: 0.03;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.shape-left {
+  bottom: -200px;
+  left: -200px;
+}
+
+.shape-right {
+  top: -200px;
+  right: -200px;
+}
+
+/* Responsive styles in responsive.css */

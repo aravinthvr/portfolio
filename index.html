@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aravinth's Portfolio | SDE & Data Science</title>
+    <meta name="description" content="Software Development Engineer and Data Science & Machine Learning professional portfolio">
+      <!-- Favicon -->
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components/header.css">
+    <link rel="stylesheet" href="css/components/hero.css">
+    <link rel="stylesheet" href="css/components/about.css">
+    <link rel="stylesheet" href="css/components/resume.css">
+    <link rel="stylesheet" href="css/components/experience.css">
+    <link rel="stylesheet" href="css/components/projects.css">
+    <link rel="stylesheet" href="css/components/publications.css">
+    <link rel="stylesheet" href="css/components/certifications.css">
+    <link rel="stylesheet" href="css/components/education.css">
+    <link rel="stylesheet" href="css/components/achievements.css">
+    <link rel="stylesheet" href="css/components/skills.css">    <link rel="stylesheet" href="css/components/contact.css">
+    <link rel="stylesheet" href="css/components/footer.css">
+    <link rel="stylesheet" href="css/components/custom-icons.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body class="light-theme">
+    <!-- Component placeholders -->
+    <div id="header"></div>
+    <div id="hero"></div>
+    <div id="about"></div>
+    <div id="resume"></div>
+    <div id="experience"></div>
+    <div id="projects"></div>
+    <div id="publications"></div>
+    <div id="certifications"></div>
+    <div id="education"></div>
+    <div id="achievements"></div>
+    <div id="skills"></div>
+    <div id="contact"></div>
+    <div id="footer"></div>
+
+    <!-- JavaScript -->
+    <script src="js/template-engine.js"></script>
+    <script src="js/main.js"></script>    <script>
+        // Wait for DOM content to be loaded
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Load all components
+            await Promise.all([
+                templateEngine.insertComponent('#header', 'components/header.html'),
+                templateEngine.insertComponent('#hero', 'components/hero.html'),
+                templateEngine.insertComponent('#about', 'components/about.html'),
+                templateEngine.insertComponent('#resume', 'components/resume.html'),
+                templateEngine.insertComponent('#experience', 'components/experience.html'),
+                templateEngine.insertComponent('#projects', 'components/projects.html'),
+                templateEngine.insertComponent('#publications', 'components/publications.html'),
+                templateEngine.insertComponent('#certifications', 'components/certifications.html'),
+                templateEngine.insertComponent('#education', 'components/education.html'),
+                templateEngine.insertComponent('#achievements', 'components/achievements.html'),
+                templateEngine.insertComponent('#skills', 'components/skills.html'),
+                templateEngine.insertComponent('#contact', 'components/contact.html'),
+                templateEngine.insertComponent('#footer', 'components/footer.html')
+            ]);
+
+            // Initialize the site after components are loaded
+            if (window.initSite) {
+                window.initSite();
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,408 @@
+/**
+ * ACHIEVEMENTS COMPONENT
+ * 
+ * Styles for the achievements section
+ * Previously these styles were scattered across multiple CSS files
+ * including updates.css, styles.css, and responsive.css.
+ * 
+ * Organization:
+ * - Main achievement section layout
+ * - Achievement cards styling
+ * - Other achievements grid and items
+ * - Dark mode support
+ * - Responsive styles
+ */
+
+/* Main Achievements Section */
+.achievements.section {
+    padding: 4rem 0;
+}
+
+/* Achievements Wrapper - Two-column grid for main achievement cards */
+.achievements-wrapper {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* More responsive grid */
+    gap: 2.5rem;
+    margin: 2.5rem 0 3.5rem;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Main Achievement Cards */
+.achievement-card {
+    background-color: var(--card-bg);
+    border-radius: 16px; /* Softer radius */
+    box-shadow: var(--shadow-elevation-medium);
+    overflow: hidden;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    border: 1px solid var(--border-color-light, #e0e0e0); /* Lighter border */
+}
+
+.achievement-card:hover {
+    transform: translateY(-8px); /* More pronounced lift */
+    box-shadow: var(--shadow-elevation-high);
+}
+
+/* Achievement Image Container - Now a background holder */
+.achievement-image {
+    width: 100%;
+    height: 350px; /* Increased height for better visuals */
+    position: relative;
+    background-size: cover;
+    background-position: center center; /* Default for all cards */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    box-sizing: border-box;
+}
+
+/* Specific adjustment for the first achievement card image */
+.achievement-card:first-child .achievement-image {
+    background-position: center 20%; /* Adjust to prevent face cut-off */
+}
+
+/* Add a gradient overlay for text readability on image */
+.achievement-image::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.75) 100%); /* Adjusted gradient */
+    z-index: 1;
+    border-radius: 16px 16px 0 0; /* Match card's top border radius */
+}
+
+/* Hide the img tag if using background-image approach */
+.award-img {
+    display: none; /* Hidden as image is now a background */
+}
+
+/* Achievement Overlay - Integrated into .achievement-image */
+.achievement-overlay {
+    position: relative; /* No longer absolute, part of .achievement-image flex */
+    z-index: 2; /* Above the gradient */
+    color: white;
+    text-align: left; /* Align text to the left */
+    width: 100%;
+    padding: 0; /* Padding is now on .achievement-image */
+    background-color: transparent; /* No separate background */
+}
+
+/* Achievement Title */
+.achievement-title {
+    font-size: 1.75rem; /* Larger title */
+    font-weight: 700;
+    margin: 0 0 0.35rem 0;
+    color: #ffffff; /* Ensure pure white for contrast */
+    text-align: left;
+    padding: 0; /* Padding is on .achievement-image */
+    line-height: 1.25; /* Adjusted line height */
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* Subtle text shadow */
+}
+
+/* Achievement Year - More subtle */
+.achievement-year {
+    background-color: rgba(255, 255, 255, 0.15); /* Slightly more visible background */
+    color: #f0f0f0; /* Light greyish white */
+    padding: 0.3rem 0.75rem; /* Adjusted padding */
+    font-weight: 500;
+    font-size: 0.85rem; /* Slightly smaller */
+    display: inline-block; /* Changed display */
+    text-align: left;
+    margin-top: 0.25rem; /* Added some top margin */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px; /* Softer radius */
+}
+
+/* Achievement Details Container */
+.achievement-details {
+    padding: 1.75rem; /* Increased padding */
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: var(--card-bg); /* Ensure this matches card background */
+}
+
+/* Achievement Organization */
+.achievement-organization {
+    font-size: 0.95rem; /* Adjusted size */
+    font-weight: 600; /* Slightly bolder */
+    color: var(--primary-color-dark, var(--primary-color)); /* Darker shade of primary or primary */
+    margin: 0 0 0.75rem 0; /* Adjusted margin */
+}
+
+/* Achievement Description */
+.achievement-description {
+    font-size: 0.9rem; /* Standardized size */
+    line-height: 1.75; /* Increased line-height for readability */
+    color: var(--text-color-medium, var(--text-color)); /* Medium text color */
+    margin: 0 0 1.75rem 0; /* Adjusted margin */
+    flex-grow: 1;
+}
+
+/* Achievement Tags Container */
+.achievement-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* Adjusted gap */
+    margin: 0; /* Remove margin as padding is on parent */
+}
+
+/* Individual Achievement Tag */
+.achievement-tag {
+    background-color: var(--tag-bg-color, rgba(var(--primary-color-rgb), 0.08)); /* Slightly less opaque */
+    color: var(--tag-text-color, var(--primary-color));
+    padding: 0.45rem 0.9rem; /* Adjusted padding */
+    border-radius: var(--border-radius-pill, 20px); /* Pill shape */
+    font-size: 0.7rem; /* Smaller for a cleaner look */
+    font-weight: 600; /* Bolder */
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.achievement-tag:hover {
+    background-color: var(--tag-bg-hover-color, rgba(var(--primary-color-rgb), 0.15));
+    color: var(--tag-text-hover-color, var(--primary-color-dark));
+}
+
+.achievement-tag i {
+    color: inherit; /* Inherit color from parent tag for consistency */
+    font-size: 0.7rem;
+}
+
+/* Other Achievements Section */
+.other-achievements-section {
+    margin-top: 3rem;
+}
+
+/* Section Heading for Other Achievements */
+.other-achievements-heading {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #333;
+    position: relative;
+    padding-left: 0.75rem;
+    border-left: 3px solid #4361ee;
+}
+
+/* Grid for Other Achievements */
+.other-achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* Other Achievement Items */
+.other-achievement-item {
+    background-color: var(--card-bg);
+    border-radius: var(--border-radius-md);
+    padding: var(--spacing-md);
+    box-shadow: 0 3px 12px var(--shadow-color);
+    display: flex;
+    gap: 1.25rem;
+    transition: all var(--transition-normal);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    align-items: flex-start;
+}
+
+.other-achievement-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Icon for Other Achievements */
+.other-achievement-icon {
+    width: 45px;
+    height: 45px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: var(--border-radius-round);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.other-achievement-icon i {
+    font-size: 1.2rem;
+}
+
+/* Content Container for Other Achievements */
+.other-achievement-content {
+    flex-grow: 1;
+}
+
+/* Title for Other Achievements */
+.other-achievement-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 0.25rem 0;
+    color: var(--text-color);
+}
+
+/* Organization for Other Achievements */
+.other-achievement-org {
+    font-size: 0.9rem;
+    color: var(--text-color-light);
+    margin: 0 0 0.25rem 0;
+}
+
+/* Year for Other Achievements */
+.other-achievement-year {
+    font-size: 0.8rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.other-achievement-year:before {
+    content: '\f073';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 400;
+}
+
+/* Description for Other Achievements */
+.other-achievement-description {
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-color-light);
+    margin: 0.5rem 0 0 0;
+}
+
+/* Add subtle entrance animation for achievements */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.achievement-card {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.achievement-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.other-achievement-item {
+    animation: fadeInUp 0.5s ease-out forwards;
+    animation-delay: 0.4s;
+}
+
+.other-achievement-item:nth-child(2) {
+    animation-delay: 0.5s;
+}
+
+.other-achievement-item:nth-child(3) {
+    animation-delay: 0.6s;
+}
+
+/* Fix for dark mode */
+body.dark-theme .achievement-card,
+body.dark-theme .other-achievement-item {
+    background-color: #333;
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.dark-theme .achievement-image {
+    background-color: #2a2a2a;
+}
+
+body.dark-theme .achievement-title {
+    color: #fff;
+}
+
+body.dark-theme .achievement-organization,
+body.dark-theme .achievement-description,
+body.dark-theme .other-achievement-title,
+body.dark-theme .other-achievement-org,
+body.dark-theme .other-achievement-description {
+    color: #ddd;
+}
+
+body.dark-theme .achievement-tag {
+    background-color: rgba(67, 97, 238, 0.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 992px) {
+    .achievements-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .other-achievements-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .other-achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .other-achievement-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .achievement-image {
+        height: 180px;
+    }
+    
+    .other-achievement-icon {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Make tag colors consistent with design */
+.achievement-tag:nth-child(1) {
+    background-color: rgba(67, 97, 238, 0.1);
+    color: var(--primary-color);
+}
+
+.achievement-tag:nth-child(1) i {
+    color: var(--primary-color);
+}
+
+.achievement-tag:nth-child(2) {
+    background-color: rgba(238, 67, 97, 0.1);
+    color: #ee4361;
+}
+
+.achievement-tag:nth-child(2) i {
+    color: #ee4361;
+}
+
+.achievement-tag:nth-child(3) {
+    background-color: rgba(67, 238, 164, 0.1);
+    color: #43eea4;
+}
+
+.achievement-tag:nth-child(3) i {
+    color: #43eea4;
+}
+
+.achievement-tag:nth-child(4) {
+    background-color: rgba(238, 201, 67, 0.1);
+    color: #eec943;
+}
+
+.achievement-tag:nth-child(4) i {
+    color: #eec943;
+}
