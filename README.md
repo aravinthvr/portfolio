@@ -2,6 +2,8 @@
 
 A modern, responsive portfolio website showcasing Aravinth's skills, projects, and professional experience in both Software Development Engineering and Data Science & Machine Learning.
 
+🔗 [Visit My Portfolio](https://aravinthvr.github.io/portfolio/)
+
 ---
 
 ## Features
