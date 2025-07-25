@@ -291,6 +291,30 @@
     color: #fbbc04;
 }
 
+/* Dark Theme Overrides for Skills Section */
+.dark-theme .skills-category h3,
+.dark-theme .legend-item {
+    color: #f5f5f5;
+}
+
+.dark-theme .skill-tag[data-level="proficient"] {
+    color: #34ffb4;
+    border-color: #34ffb4;
+}
+.dark-theme .skill-tag[data-level="intermediate"] {
+    color: #7cb8ff;
+    border-color: #7cb8ff;
+}
+.dark-theme .skill-tag[data-level="exploring"] {
+    color: #c7a6ff;
+    border-color: #c7a6ff;
+}
+.dark-theme .skill-tag[data-level="familiar"],
+.dark-theme .skill-tag.aws-service {
+    color: #ffd580;
+    border-color: #ffd580;
+}
+
 /* Responsive Styles */
 @media screen and (max-width: 768px) {
     .skills-content {

@@ -1,5 +1,5 @@
 <!-- Projects Section -->
-<section class="projects section" id="projects">
+<section class="projects section horizontal-scroll-enabled" id="projects">
     <div class="container">
         <div class="section-heading">
             <h2>My Projects</h2>
@@ -10,10 +10,19 @@
             <button class="filter-button" data-filter="sde">Software Development</button>
             <button class="filter-button" data-filter="dsml">Data Science & ML</button>
         </div>
-        <div class="projects-grid">            <!-- SDE Project 1 -->
+        <div class="scroll-arrow-container">
+           <button class="scroll-arrow prev-arrow" aria-label="Previous items">
+               <i class="fas fa-chevron-left"></i>
+           </button>
+           <button class="scroll-arrow next-arrow" aria-label="Next items">
+               <i class="fas fa-chevron-right"></i>
+           </button>
+       </div>
+        <div class="horizontal-scroll-wrapper">
+            <div class="scroll-content projects-grid"> <!-- SDE Project 1 -->
             <div class="project-card" data-category="sde">
                 <div class="project-image">
-                    <img src="assets/projects/enterprise-dashboard.svg" alt="Automated Code Quality & Security Reporting System">
+                    <img src="assets/projects/Delta_metrics.jpeg" alt="Automated Code Quality & Security Reporting System">
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Automated Code Quality & Security Reporting System</h3>
@@ -32,7 +41,7 @@
             <!-- SDE Project 2 -->
             <div class="project-card" data-category="sde">
                 <div class="project-image">
-                    <img src="assets/projects/enterprise-dashboard.svg" alt="Application Enhancements">
+                    <img src="assets/projects/Application_Enhancements.jpeg" alt="Application Enhancements">
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Experiments on Application Enhancements</h3>
@@ -50,7 +59,7 @@
               <!-- DSML Project 1 -->
             <div class="project-card" data-category="dsml">
                 <div class="project-image">
-                    <img src="assets/projects/predictive-model.svg" alt="Data Science Case Studies">
+                    <img src="assets/projects/DSML_CaseStudies.jpeg" alt="Data Science Case Studies">
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">End-to-End Data Science Case Studies</h3>
@@ -63,7 +72,7 @@
                     </div>
                     <div class="project-links">
                         <a href="https://github.com/aravinthvr/dsml-business-case-studies" class="project-link" target="_blank"><i class="fab fa-github"></i> Source Code</a>
-                        <a href="#" class="project-link"><i class="fas fa-file-alt"></i> Case Study</a>
+                        <a href="#" class="project-link open-pdf-modal" data-modal-title="Data Science Case Study"><i class="fas fa-file-alt"></i> Case Study</a>
                     </div>
                 </div>
             </div>
@@ -71,7 +80,7 @@
             <!-- DSML Project 2 -->
             <div class="project-card" data-category="dsml">
                 <div class="project-image">
-                    <img src="assets/projects/predictive-model.svg" alt="Interactive Dashboards">
+                    <img src="assets/projects/Tableau_Inference.jpg" alt="Interactive Dashboards">
                 </div>
                 <div class="project-content">
                     <h3 class="project-title">Interactive Tableau Dashboards</h3>
@@ -82,7 +91,7 @@
                         <span class="tech-tag">Analytics</span>
                         <span class="tech-tag">Dashboard Design</span>
                     </div>                    <div class="project-links">
-                        <a href="https://public.tableau.com/app/profile/aravinthaprasath.venkataramanan/viz/Super_Store_Interactive_dashboard/Dashboard1" class="project-link" target="_blank"><i class="fas fa-chart-bar"></i> Featured Dashboard</a>
+                        <a href="http://public.tableau.com/views/Super_Store_Interactive_dashboard/Dashboard1?:embed=y&:showVizHome=no&:host_url=https%3A%2F%2Fpublic.tableau.com%2F&:embed_code_version=3&:tabs=no&:toolbar=yes&:animate_transition=yes&:display_static_image=no&:display_spinner=no&:display_overlay=yes&:display_count=yes&:language=en-GB&:loadOrderID=0" class="project-link open-pdf-modal" data-modal-title="Interactive Tableau Dashboard"><i class="fas fa-chart-bar"></i> Featured Dashboard</a>
                         <a href="https://public.tableau.com/app/profile/aravinthaprasath.venkataramanan/vizzes" class="project-link" target="_blank"><i class="fas fa-external-link-alt"></i> View All Dashboards</a>
                     </div>
                 </div>
@@ -103,10 +112,11 @@
                         <span class="tech-tag">Signal Processing</span>
                     </div>
                     <div class="project-links">
-                        <a href="https://drive.google.com/file/d/19Kf-9laFokxeZL5L820dewXIgpgAL4bQ/view" class="project-link" target="_blank"><i class="fas fa-file-alt"></i> Research Paper</a>
+                        <a href="https://drive.google.com/file/d/19Kf-9laFokxeZL5L820dewXIgpgAL4bQ/view" class="project-link open-pdf-modal" data-modal-title="ECG Abnormality Classification Paper"><i class="fas fa-file-alt"></i> Research Paper</a>
                     </div>
                 </div>
             </div>
-        </div>
+            </div> <!-- Closing scroll-content -->
+        </div> <!-- Closing horizontal-scroll-wrapper -->
     </div>
 </section>

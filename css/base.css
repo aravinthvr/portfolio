@@ -12,17 +12,18 @@
 /* ======= CSS Variables ======= */
 :root {
     /* Light Theme Colors */
-    --primary-color: #4361ee;
-    --secondary-color: #3f37c9;
-    --accent-color: #4895ef;
-    --text-color: #333333;
-    --text-color-light: #666666;
-    --bg-color: #ffffff;
-    --bg-color-alt: #f9f9f9;
-    --card-bg: #ffffff;
-    --border-color: #e0e0e0;
-    --shadow-color: rgba(0, 0, 0, 0.1);
-    --success-color: #4caf50;
+    --primary-color: #4361ee; /* Desaturated Blue */
+    --primary-color-rgb: 67, 97, 238; /* RGB for Desaturated Blue */
+    --secondary-color: #3f37c9; /* Darker Desaturated Blue */
+    --accent-color: #4895ef; /* Lighter Desaturated Blue */
+    --text-color: #333333; /* Dark Gray */
+    --text-color-light: #666666; /* Medium Gray */
+    --bg-color: #ffffff; /* White */
+    --bg-color-alt: #f9f9f9; /* Light Gray */
+    --card-bg: #ffffff; /* White */
+    --border-color: #e0e0e0; /* Light Gray */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Soft Shadow */
+    --success-color: #4caf50; /* Green */
     
     /* Spacing */
     --spacing-xs: 0.5rem;
@@ -45,16 +46,17 @@
 
 /* ======= Dark Theme Variables ======= */
 .dark-theme {
-    --primary-color: #4895ef;
-    --secondary-color: #3f8efc;
-    --accent-color: #5390d9;
-    --text-color: #e0e0e0;
-    --text-color-light: #b0b0b0;
-    --bg-color: #121212;
-    --bg-color-alt: #1e1e1e;
-    --card-bg: #2a2a2a;
-    --border-color: #444444;
-    --shadow-color: rgba(0, 0, 0, 0.5);
+    --primary-color: #4895ef; /* Lighter Desaturated Blue */
+    --primary-color-rgb: 72, 149, 239; /* RGB for Lighter Desaturated Blue */
+    --secondary-color: #3f8efc; /* Darker Desaturated Blue */
+    --accent-color: #5390d9; /* Even Darker Desaturated Blue */
+    --text-color: #e0e0e0; /* Light Gray */
+    --text-color-light: #b0b0b0; /* Medium-Dark Gray */
+    --bg-color: #121212; /* Very Dark Desaturated Blue/Gray */
+    --bg-color-alt: #1e1e1e; /* Darker Gray */
+    --card-bg: #2a2a2a; /* Dark Gray */
+    --border-color: #444444; /* Medium-Dark Gray */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Darker Shadow */
 }
 
 /* ======= Reset ======= */
