@@ -112,4 +112,15 @@
   box-shadow: 0 8px 15px rgba(var(--primary-color-rgb), 0.4);
 }
 
+.privacy-notice {
+  margin-top: 1rem;
+  text-align: center;
+  color: var(--text-color-light);
+  font-size: 0.85rem;
+}
+.privacy-notice a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  margin-left: 0.25em;
+}
 /* Responsive styles in responsive.css */
