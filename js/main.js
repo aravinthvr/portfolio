@@ -24,49 +24,46 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Theme Switcher
     function initTheme() {
-        // Check for saved theme preference or use system preference
         const savedTheme = localStorage.getItem('theme');
         const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
         
-        if (savedTheme === 'dark' || (savedTheme === null && prefersDarkScheme)) {
-            document.body.classList.add('dark-theme');
-            document.body.classList.remove('light-theme');
+        // Remove existing theme classes to start clean
+        body.classList.remove('dark-theme', 'light-theme');
+
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-theme');
+        } else if (savedTheme === 'light') {
+            body.classList.add('light-theme');
+        } else if (prefersDarkScheme) {
+            body.classList.add('dark-theme');
         } else {
-            document.body.classList.remove('dark-theme');
-            document.body.classList.add('light-theme');
+            body.classList.add('light-theme'); // Default to light theme
         }
     }
 
     if (themeToggle) {
-        // Ensure theme toggle reflects current theme
         themeToggle.addEventListener('click', () => {
-            // Toggle theme classes
-            document.body.classList.toggle('dark-theme');
-            
-            // Save preference to localStorage
-            const isDarkMode = document.body.classList.contains('dark-theme');
-            localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-            
-            // Log for debugging
-            console.log('Theme toggled. Current theme:', isDarkMode ? 'dark' : 'light');
+            // Determine the new theme by checking if dark-theme is currently active *before* toggling
+            const isCurrentlyDark = body.classList.contains('dark-theme');
+            if (isCurrentlyDark) {
+                body.classList.remove('dark-theme');
+                body.classList.add('light-theme');
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.classList.remove('light-theme');
+                body.classList.add('dark-theme');
+                localStorage.setItem('theme', 'dark');
+            }
+            // console.log('Theme toggled. Current theme:', body.classList.contains('dark-theme') ? 'dark' : 'light');
         });
     }
 
     // Mobile Navigation
     if (navToggle) {
         navToggle.addEventListener('click', () => {
-            // Toggle active class on the nav toggle button
             navToggle.classList.toggle('active');
-            
-            // Toggle active class on the menu
             navMenu.classList.toggle('active');
-            
-            // Add/remove body scroll lock when menu is open
-            if (navMenu.classList.contains('active')) {
-                document.body.style.overflow = 'hidden';
-            } else {
-                document.body.style.overflow = '';
-            }
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
         });
     }
 
@@ -75,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks.forEach(link => {
             if (!link.classList.contains('dropdown-toggle')) {
                 link.addEventListener('click', () => {
-                    if (navToggle && navMenu) {
+                    if (navToggle && navMenu && navMenu.classList.contains('active')) {
                         navToggle.classList.remove('active');
                         navMenu.classList.remove('active');
                         document.body.style.overflow = '';
@@ -91,29 +88,12 @@ document.addEventListener('DOMContentLoaded', () => {
             toggle.addEventListener('click', (e) => {
                 e.preventDefault();
                 const dropdown = toggle.closest('.dropdown');
+                const isActive = dropdown.classList.contains('active');
                 
-                if (window.innerWidth <= 768) {
-                    // Mobile view behavior - toggle dropdown
-                    
-                    // Close other dropdowns
-                    dropdowns.forEach(d => {
-                        if (d !== dropdown) {
-                            d.classList.remove('active');
-                        }
-                    });
-                    
-                    // Toggle current dropdown
-                    dropdown.classList.toggle('active');
-                } else {
-                    // Desktop view behavior - click to toggle
-                    if (dropdown.classList.contains('active')) {
-                        dropdown.classList.remove('active');
-                    } else {
-                        // Close any open dropdowns
-                        dropdowns.forEach(d => d.classList.remove('active'));
-                        // Open the clicked dropdown
-                        dropdown.classList.add('active');
-                    }
+                dropdowns.forEach(d => d.classList.remove('active'));
+                
+                if (!isActive || window.innerWidth > 768) {
+                    dropdown.classList.toggle('active', !isActive);
                 }
             });
         });
@@ -122,26 +102,20 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close dropdowns when clicking outside
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.dropdown')) {
-            dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
+            dropdowns.forEach(dropdown => dropdown.classList.remove('active'));
         }
     });
 
     // Active Navigation Link on Scroll
     function setActiveLink() {
-        const sections = document.querySelectorAll('section');
-        const scrollPosition = window.scrollY + 100; // Offset for better UX
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPosition = window.scrollY + 100; 
 
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            const sectionId = section.getAttribute('id');
-            
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            if (section.offsetTop <= scrollPosition && (section.offsetTop + section.offsetHeight) > scrollPosition) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === `#${sectionId}`) {
+                    if (section.id && link.getAttribute('href') === `#${section.id}`) {
                         link.classList.add('active');
                     }
                 });
@@ -152,31 +126,26 @@ document.addEventListener('DOMContentLoaded', () => {
     // Scroll to Top Button
     function toggleScrollToTopBtn() {
         if (scrollToTopBtn) {
-            if (window.scrollY > 500) {
-                scrollToTopBtn.classList.add('visible');
-            } else {
-                scrollToTopBtn.classList.remove('visible');
-            }
+            scrollToTopBtn.classList.toggle('visible', window.scrollY > 500);
         }
     }
 
     if (scrollToTopBtn) {
         scrollToTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         });
     }
 
     // Resume PDF Preview/Download
-    const previewButtons = document.querySelectorAll('.btn-preview');
+    const previewButtons = document.querySelectorAll('.btn-preview:not(.open-pdf-modal)');
     previewButtons.forEach(btn => {
         btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const pdfPath = btn.getAttribute('href');
-            if (pdfPath && pdfPath !== '#') {
-                window.open(pdfPath, '_blank');
+            if (!btn.classList.contains('open-pdf-modal')) {
+                e.preventDefault();
+                const pdfPath = btn.getAttribute('href');
+                if (pdfPath && pdfPath !== '#') {
+                    window.open(pdfPath, '_blank');
+                }
             }
         });
     });
@@ -185,19 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
     projectFilters.forEach(filter => {
         filter.addEventListener('click', () => {
             const filterValue = filter.getAttribute('data-filter');
-            
-            // Remove active class from all filters and add to current
             projectFilters.forEach(f => f.classList.remove('active'));
             filter.classList.add('active');
             
-            // Show/hide projects based on filter
-            const projectCards = document.querySelectorAll('.project-card');
+            const projectCards = document.querySelectorAll('#projects .project-card');
             projectCards.forEach(card => {
-                if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
+                card.style.display = (filterValue === 'all' || card.getAttribute('data-category') === filterValue) ? 'flex' : 'none';
             });
         });
     });
@@ -206,44 +168,25 @@ document.addEventListener('DOMContentLoaded', () => {
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-
-            // Remove any existing success message
             const oldMsg = contactForm.parentNode.querySelector('.form-success');
             if (oldMsg) oldMsg.remove();
-
-            // Optionally disable the submit button
-            const submitBtn = contactForm.querySelector('.btn-submit');
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
             if (submitBtn) submitBtn.disabled = true;
-
-            // Get form data
             const formData = new FormData(contactForm);
 
             fetch(contactForm.action, {
                 method: 'POST',
                 body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
+                headers: { 'Accept': 'application/json' }
             })
             .then(response => {
                 if (response.ok) {
                     contactForm.reset();
-
-                    // Show success message
                     const successMsg = document.createElement('div');
                     successMsg.classList.add('form-success');
                     successMsg.textContent = 'Thank you for your message! I will get back to you soon.';
-
                     contactForm.parentNode.insertBefore(successMsg, contactForm.nextSibling);
-
-                    // Optionally hide the form after submission
-                    // contactForm.style.display = 'none';
-
-                    setTimeout(() => {
-                        successMsg.remove();
-                        // Optionally show the form again
-                        // contactForm.style.display = '';
-                    }, 5000);
+                    setTimeout(() => successMsg.remove(), 5000);
                 } else {
                     throw new Error('Form submission failed');
                 }
@@ -258,30 +201,123 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // PDF Modal Functionality
+    const modalOverlay = document.getElementById('pdfModalOverlay');
+    const pdfModal = document.getElementById('pdfModal');
+    const modalCloseBtn = pdfModal ? pdfModal.querySelector('.modal-close-btn') : null;
+    const pdfIframe = pdfModal ? pdfModal.querySelector('.modal-body iframe') : null;
+    const modalTitleEl = pdfModal ? pdfModal.querySelector('.modal-title') : null;
+    const pdfLinks = document.querySelectorAll('a.open-pdf-modal');
+
+    if (modalOverlay && pdfModal && modalCloseBtn && pdfIframe) {
+        const openModal = (pdfUrl, title) => {
+            if (pdfUrl) {
+                pdfIframe.setAttribute('src', pdfUrl);
+                if (modalTitleEl) modalTitleEl.textContent = title || 'Document Preview';
+                modalOverlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+        };
+        const closeModal = () => {
+            modalOverlay.classList.remove('active');
+            pdfIframe.setAttribute('src', '');
+            document.body.style.overflow = '';
+        };
+        pdfLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const pdfUrl = link.getAttribute('href');
+                const title = link.getAttribute('data-modal-title') || link.textContent.trim();
+                if (pdfUrl && pdfUrl !== '#') openModal(pdfUrl, title);
+                else console.warn('PDF link href is missing or invalid:', link);
+            });
+        });
+        modalCloseBtn.addEventListener('click', closeModal);
+        const modalOpenBtn = pdfModal.querySelector('.modal-open-btn');
+        if (modalOpenBtn) {
+            modalOpenBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                const iframeSrc = pdfIframe.getAttribute('src');
+                if (iframeSrc) {
+                    window.open(iframeSrc, '_blank');
+                } else {
+                    console.warn('Iframe source is empty.');
+                }
+            });
+        }
+        modalOverlay.addEventListener('click', e => { if (e.target === modalOverlay) closeModal(); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape' && modalOverlay.classList.contains('active')) closeModal(); });
+    } else {
+        console.warn('Modal elements not found. PDF Modal functionality will not work.');
+    }
+
+    // Horizontal Scroll with Arrows Functionality
+    function setupHorizontalScroll(sectionId) {
+        const sectionElement = document.getElementById(sectionId);
+        if (!sectionElement) return;
+
+        const wrapper = sectionElement.querySelector('.horizontal-scroll-wrapper');
+        const prevArrow = sectionElement.querySelector('.prev-arrow');
+        const nextArrow = sectionElement.querySelector('.next-arrow');
+        
+        if (!wrapper || !prevArrow || !nextArrow) {
+            return;
+        }
+
+        let scrollTimeout; 
+
+        function updateArrowStates() {
+            if (!wrapper) return; 
+            const scrollLeft = wrapper.scrollLeft;
+            const scrollWidth = wrapper.scrollWidth;
+            const clientWidth = wrapper.clientWidth;
+
+            prevArrow.classList.toggle('disabled', scrollLeft <= 0);
+            nextArrow.classList.toggle('disabled', scrollLeft + clientWidth >= scrollWidth - 5);
+        }
+
+        prevArrow.addEventListener('click', () => {
+            if (wrapper.scrollLeft > 0) {
+                 wrapper.scrollBy({ left: -300, behavior: 'smooth' });
+            }
+        });
+
+        nextArrow.addEventListener('click', () => {
+            if (wrapper.scrollLeft + wrapper.clientWidth < wrapper.scrollWidth - 5) {
+                wrapper.scrollBy({ left: 300, behavior: 'smooth' });
+            }
+        });
+
+        wrapper.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateArrowStates, 50); 
+        });
+        
+        setTimeout(updateArrowStates, 100); 
+        window.addEventListener('resize', () => {
+             clearTimeout(scrollTimeout); 
+             scrollTimeout = setTimeout(updateArrowStates, 100);
+        });
+    }
+
+    setupHorizontalScroll('projects');
+    setupHorizontalScroll('certifications');
+
     // Intersection Observer for animations
     function setupIntersectionObserver() {
-        const options = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries) => {
+        const options = { root: null, rootMargin: '0px', threshold: 0.1 };
+        const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
                 }
             });
         }, options);
-
-        // Observe sections for animations
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
+        document.querySelectorAll('section, .timeline-item').forEach(el => observer.observe(el));
     }
 
     // Initialize Functions
-    initTheme();
+    initTheme(); 
     setupIntersectionObserver();
 
     // Event Listeners
@@ -289,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
         setActiveLink();
         toggleScrollToTopBtn();
     });
-      // Initial call to functions that need to run on page load
+    
     setActiveLink();
     toggleScrollToTopBtn();
     

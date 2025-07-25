@@ -22,9 +22,11 @@
     <link rel="stylesheet" href="css/components/certifications.css">
     <link rel="stylesheet" href="css/components/education.css">
     <link rel="stylesheet" href="css/components/achievements.css">
-    <link rel="stylesheet" href="css/components/skills.css">    <link rel="stylesheet" href="css/components/contact.css">
+    <link rel="stylesheet" href="css/components/skills.css">    
+    <link rel="stylesheet" href="css/components/contact.css">
     <link rel="stylesheet" href="css/components/footer.css">
     <link rel="stylesheet" href="css/components/custom-icons.css">
+    <link rel="stylesheet" href="css/components/modal.css"> {/* Added modal.css */}
     <link rel="stylesheet" href="css/responsive.css">
     
     <!-- Font Awesome for icons -->
@@ -47,11 +49,13 @@
     <div id="achievements"></div>
     <div id="skills"></div>
     <div id="contact"></div>
+    <div id="modalContainer"></div>
     <div id="footer"></div>
 
     <!-- JavaScript -->
     <script src="js/template-engine.js"></script>
-    <script src="js/main.js"></script>    <script>
+    <script src="js/main.js"></script>    
+    <script>
         // Wait for DOM content to be loaded
         document.addEventListener('DOMContentLoaded', async () => {
             // Load all components
@@ -68,7 +72,7 @@
                 templateEngine.insertComponent('#achievements', 'components/achievements.html'),
                 templateEngine.insertComponent('#skills', 'components/skills.html'),
                 templateEngine.insertComponent('#contact', 'components/contact.html'),
-                templateEngine.insertComponent('#footer', 'components/footer.html')
+                templateEngine.insertComponent('#modalContainer', 'components/modal.html'),
             ]);
 
             // Initialize the site after components are loaded

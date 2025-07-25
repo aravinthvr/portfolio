@@ -7,20 +7,43 @@
 /* Certifications Section */
 .certifications {
     background-color: var(--bg-color-alt);
+    position: relative; /* For positioning arrow container */
 }
 
-/* Certifications Grid */
+/* Horizontal Scroll Wrapper - now default */
+.certifications .horizontal-scroll-wrapper { /* Scoped to certifications */
+    position: relative;
+    overflow-x: auto;
+    padding-bottom: 1rem; /* Space for scrollbar if not hidden by OS overlay */
+    margin-bottom: -1rem; /* Counteract padding-bottom for layout consistency */
+    /* Hide Scrollbar */
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+.certifications .horizontal-scroll-wrapper::-webkit-scrollbar {
+    display: none;  /* Chrome, Safari, Opera */
+}
+
+/* Scroll Content (was .certifications-grid when horizontal) - now default */
+.certifications .scroll-content { /* Scoped to certifications */
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0; /* Remove grid gap, manage spacing with cert-card margin */
+    padding-bottom: 1.5rem; /* Ensure cards don't get cut off by wrapper padding */
+    /* Original grid styles like max-width, margin-left/right auto are removed */
+    /* as they don't make sense for a horizontal scroll container */
+    margin-top: 0; /* Reset margin-top from original grid */
+}
+
+/* Certifications Grid (was part of scroll-content, now just for card layout within flex items) */
+/* No longer a grid container itself when horizontal scroll is active by default */
 .certifications-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
-    margin-top: 2rem;
-    max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
+    /* Styles that were here for grid layout are now on .scroll-content or .cert-card */
+    margin-top: 0; /* Overriding the 2rem margin from previous grid style */
 }
 
-/* Certification Card */
+/* Certification Card - adjusted for horizontal layout */
 .cert-card {
     background-color: var(--card-bg);
     border-radius: var(--border-radius-lg);
@@ -31,9 +54,18 @@
     flex-direction: column;
     position: relative;
     overflow: hidden;
-    height: 100%;
-    min-height: 340px;
+    /* height: 100%; Removed for flex row, min-height is better */
+    min-height: 340px; /* Retained from original */
+
+    flex: 0 0 auto; /* Prevent shrinking */
+    width: 320px;   /* Slightly narrower than projects */
+    margin-right: 1.5rem; /* Space between cards */
+    margin-bottom: 0; /* Remove grid gap effect */
 }
+.cert-card:last-child {
+    margin-right: 0;
+}
+
 
 .cert-card:before {
     content: "";
@@ -69,19 +101,12 @@
 }
 
 /* Certification Content */
-.cert-name {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-}
-
 .cert-title {
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--text-color);
     margin-bottom: 0.5rem;
-    min-height: 2.9rem;
+    min-height: 2.9rem; /* Keeps title area consistent if text wraps */
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
@@ -133,44 +158,22 @@
     display: inline-block;
 }
 
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
-    .certifications-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-    
-    .cert-card {
-        min-height: auto;
-    }
-    
-    .cert-title {
-        min-height: auto;
-    }
-    
-    .cert-validity {
-        display: block;
-        margin-left: 0;
-        margin-top: 5px;
-        text-align: center;
-        width: fit-content;
-    }
-}
-
 .cert-description {
     margin-top: 1rem;
     font-size: 0.95rem;
     color: var(--text-color);
     line-height: 1.6;
-    flex-grow: 1;
+    flex-grow: 1; /* Pushes links to bottom */
     margin-bottom: 1rem;
 }
 
 /* Certification Links */
 .cert-links {
-    margin-top: 1.5rem;
-    display: flex;
-    gap: 1rem;
+    margin-top: auto; /* Pushes to bottom if content above is shorter */
+    padding-top: 1rem; /* Add padding if there's a border or distinct area */
+    /* border-top: 1px solid var(--border-color); /* Optional: if you want a separator */
+    display: flex; /* Keep for link alignment */
+    gap: 1rem; /* Keep for link alignment */
 }
 
 .cert-link {
@@ -187,7 +190,7 @@
     color: var(--secondary-color);
 }
 
-/* Certification Badge */
+/* Certification Badge (logo on card) */
 .cert-badge {
     position: absolute;
     top: 1.5rem;
@@ -202,3 +205,92 @@
     transform: scale(1.1);
     opacity: 1;
 }
+
+/* Scroll Arrow Styling (copied from projects.css, ensure consistent or move to base/common) */
+.certifications .scroll-arrow-container { /* Scoped to certifications */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: calc(50% - 20px); /* Adjust based on typical card height */
+    left: 0;
+    right: 0;
+    padding: 0 var(--spacing-sm);
+    transform: translateY(-50%);
+    z-index: 20;
+    pointer-events: none;
+}
+
+.certifications .scroll-arrow { /* Scoped to certifications */
+    background-color: rgba(30, 30, 30, 0.6);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    pointer-events: all;
+}
+
+.certifications .scroll-arrow:hover { /* Scoped to certifications */
+    background-color: rgba(var(--primary-color-rgb), 0.8);
+}
+
+.certifications .scroll-arrow.disabled { /* Scoped to certifications */
+    opacity: 0.3;
+    cursor: default;
+    background-color: rgba(50,50,50,0.3);
+}
+
+.certifications .scroll-arrow i { /* Scoped to certifications */
+    font-size: 1rem;
+}
+
+/* Responsive adjustments for cert cards and arrows */
+@media (max-width: 768px) {
+    .cert-card {
+        width: 300px; /* Slightly adjust card width if needed */
+        min-height: auto; /* Allow height to be more flexible */
+    }
+    
+    .cert-title {
+        min-height: auto; /* Remove fixed min-height for title */
+    }
+    
+    .cert-validity { /* Adjust validity badge for flex layout */
+        display: inline-block;
+        margin-left: 0;
+        margin-top: 0; /* Reset from previous grid override */
+    }
+
+    .certifications .scroll-arrow-container { /* Scoped */
+        top: calc(50% - 10px);
+        padding: 0 var(--spacing-xs);
+    }
+    .certifications .scroll-arrow { /* Scoped */
+        width: 36px;
+        height: 36px;
+    }
+    .certifications .scroll-arrow i { /* Scoped */
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .cert-card {
+        width: 280px; /* Further adjust card width */
+    }
+    .certifications .scroll-arrow-container { /* Scoped */
+        /* Potentially hide arrows or adjust further if layout becomes too cramped */
+        top: calc(50% + 30px); /* Example adjustment, may need fine-tuning */
+    }
+}
+
+/* Removing old responsive grid styles for .certifications-grid as it's now flex-based */
+/* @media (max-width: 768px) { .certifications-grid { grid-template-columns: 1fr; ... } } */
+/* The flexbox .cert-card width adjustments above handle responsiveness for horizontal scroll. */
