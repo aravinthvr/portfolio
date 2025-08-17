@@ -179,7 +179,9 @@ The contact form uses Formspree to handle submissions. To configure it for your 
 
 ## License
 
-This project is open source and available under the [MIT License](LICENSE).
+This project is licensed under the Creative Commons Attribution 4.0 International License.
+
+You are free to use, modify, and share this work, but **must provide appropriate credit** to the original author: **Aravinthaprasath V.**
 
 ---
 
@@ -188,3 +190,4 @@ This project is open source and available under the [MIT License](LICENSE).
 - Icons: [Font Awesome](https://fontawesome.com/)
 - Fonts: [Google Fonts](https://fonts.google.com/)
 - Form Handling: [Formspree](https://formspree.io/)
+
