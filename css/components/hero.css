@@ -1,12 +1,14 @@
 /**
  * HERO COMPONENT
- * 
+ *
  * Styles for the hero/banner section
  */
 
 /* Hero Section */
 .hero {
-    background-color: var(--bg-color);
+    background: linear-gradient(-45deg, var(--hero-gradient-1), var(--hero-gradient-2), var(--hero-gradient-3), var(--hero-gradient-4));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
     padding-top: 100px;
     padding-bottom: 3rem;
     overflow: hidden;
@@ -32,6 +34,7 @@
     justify-content: space-between;
     gap: 3rem;
     position: relative;
+    animation: fadeIn 1s ease-out .2s backwards;
 }
 
 .hero-text {
@@ -46,7 +49,6 @@
     margin-bottom: 0.5rem;
     display: block;
     font-weight: 500;
-    animation: fadeIn 0.8s ease-out;
 }
 
 .hero-name {
@@ -55,7 +57,6 @@
     color: var(--text-color);
     margin-bottom: 0.5rem;
     line-height: 1.2;
-    animation: fadeIn 1s ease-out;
 }
 
 .hero-title {
@@ -64,7 +65,6 @@
     margin-bottom: 1.5rem;
     font-weight: 500;
     line-height: 1.4;
-    animation: fadeIn 1.2s ease-out;
 }
 
 .hero-description {
@@ -72,7 +72,6 @@
     color: var(--text-color-light);
     font-size: 1.1rem;
     line-height: 1.6;
-    animation: fadeIn 1.4s ease-out;
 }
 
 /* Hero CTA Button */
@@ -80,7 +79,6 @@
     display: flex;
     gap: 1.5rem;
     margin-top: 1.5rem;
-    animation: fadeIn 1.6s ease-out;
 }
 
 .hero-cta .btn {
@@ -124,7 +122,6 @@
     display: flex;
     gap: 1rem;
     margin-top: 2rem;
-    animation: fadeIn 1.8s ease-out;
 }
 
 .social-link {
@@ -157,7 +154,6 @@
     justify-content: center;
     align-items: center;
     z-index: 1;
-    animation: fadeIn 1.5s ease-out;
 }
 
 .hero-image:before {
@@ -246,6 +242,18 @@
     }
 }
 
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -294,12 +302,12 @@
     .hero-name {
         font-size: 3rem;
     }
-    
+
     .hero-image img.profile-image {
         width: 240px;
         height: 240px;
     }
-    
+
     .hero-image:before {
         width: 280px;
         height: 280px;
@@ -312,33 +320,33 @@
         min-height: auto;
         padding-bottom: 5rem;
     }
-    
+
     .hero-content {
         flex-direction: column-reverse;
         text-align: center;
         gap: 2rem;
     }
-    
+
     .hero-text {
         max-width: 100%;
     }
-    
+
     .hero-cta {
         justify-content: center;
     }
-    
+
     .social-links {
         justify-content: center;
     }
-    
+
     .hero-name {
         font-size: 2.5rem;
     }
-    
+
     .hero-title {
         font-size: 1.3rem;
     }
-    
+
     .scroll-down {
         bottom: 20px;
     }
@@ -348,26 +356,26 @@
     .hero-name {
         font-size: 2.2rem;
     }
-    
+
     .hero-title {
         font-size: 1.1rem;
     }
-    
+
     .hero-image img.profile-image {
         width: 200px;
         height: 200px;
     }
-    
+
     .hero-image:before {
         width: 240px;
         height: 240px;
     }
-    
+
     .hero-cta {
         flex-direction: column;
         gap: 1rem;
     }
-    
+
     .hero-cta .btn {
         width: 100%;
     }

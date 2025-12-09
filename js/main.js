@@ -313,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         }, options);
-        document.querySelectorAll('section, .timeline-item').forEach(el => observer.observe(el));
+        document.querySelectorAll('section, .timeline-item, .section-heading, .skills-category').forEach(el => observer.observe(el));
     }
 
     // Initialize Functions

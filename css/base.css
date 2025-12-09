@@ -42,6 +42,11 @@
     --transition-fast: 0.2s ease;
     --transition-normal: 0.3s ease;
     --transition-slow: 0.5s ease;
+
+    --hero-gradient-1: #f9f9f9;
+    --hero-gradient-2: #e0e0e0;
+    --hero-gradient-3: rgba(67, 97, 238, 0.1);
+    --hero-gradient-4: #f9f9f9;
 }
 
 /* ======= Dark Theme Variables ======= */
@@ -57,6 +62,11 @@
     --card-bg: #2a2a2a; /* Dark Gray */
     --border-color: #444444; /* Medium-Dark Gray */
     --shadow-color: rgba(0, 0, 0, 0.5); /* Darker Shadow */
+
+    --hero-gradient-1: #121212;
+    --hero-gradient-2: #1e1e1e;
+    --hero-gradient-3: rgba(72, 149, 239, 0.1);
+    --hero-gradient-4: #121212;
 }
 
 /* ======= Reset ======= */

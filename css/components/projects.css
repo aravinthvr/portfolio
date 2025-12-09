@@ -93,7 +93,7 @@
 
 
 .project-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-5px) scale(1.03);
     box-shadow: 0 15px 30px var(--shadow-color);
 }
 
