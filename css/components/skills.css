@@ -1,6 +1,6 @@
 /**
  * SKILLS COMPONENT
- * 
+ *
  * Modern and attractive styling for skills section
  */
 
@@ -45,14 +45,14 @@
     border: 1px solid rgba(var(--primary-color-rgb), 0.1);
     backdrop-filter: blur(10px);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 
+    box-shadow:
         0 4px 6px -1px rgba(0, 0, 0, 0.1),
         0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 .skills-category:hover {
     transform: translateY(-8px);
-    box-shadow: 
+    box-shadow:
         0 20px 25px -5px rgba(0, 0, 0, 0.1),
         0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
@@ -109,6 +109,15 @@
     align-items: center;
     gap: 0.5rem;
     position: relative;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    transition-delay: calc(0.1s * var(--i, 0));
+}
+
+.skills-category.in-view .skill-tag {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 /* Proficient Level Skills */
@@ -249,30 +258,9 @@
 /* Hover effects */
 .skill-tag:hover {
     transform: translateY(-4px) scale(1.02);
-    box-shadow: 
+    box-shadow:
         0 4px 12px rgba(var(--primary-color-rgb), 0.15),
         0 2px 4px rgba(var(--primary-color-rgb), 0.1);
-}
-
-/* Animation for skill tags */
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.skill-tag {
-    animation: fadeInUp 0.6s ease backwards;
-}
-
-/* Stagger the animation of tags */
-.skills-tag-cloud .skill-tag:nth-child(n) {
-    animation-delay: calc(0.1s * var(--i, 0));
 }
 
 /* Category-specific colors */
@@ -320,17 +308,17 @@
     .skills-content {
         grid-template-columns: 1fr;
     }
-    
+
     .category-icon {
         width: 48px;
         height: 48px;
         font-size: 1.5rem;
     }
-    
+
     .skills-category h3 {
         font-size: 1.5rem;
     }
-    
+
     .skills-tag-cloud {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     }
